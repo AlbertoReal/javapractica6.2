@@ -17,7 +17,14 @@ public class Primitiva  extends Apuesta {
     private String quiniela;
     private int listaNumeros[][];
     private int aciertos;
+    
     public Primitiva() {
+    }
+
+    public Primitiva(String quiniela, int[][] listaNumeros, int aciertos) {
+        this.quiniela = quiniela;
+        this.listaNumeros = listaNumeros;
+        this.aciertos = aciertos;
     }
 
 
@@ -27,6 +34,7 @@ public class Primitiva  extends Apuesta {
         this.setAciertos(aciertos);
         this.setQuiniela(quiniela);
     }
+        
     public Primitiva (Primitiva t1){
         super((Apuesta)t1);
         this.setAciertos(t1.getAciertos());
@@ -81,18 +89,7 @@ public class Primitiva  extends Apuesta {
         }this.setListaNumeros(primitiva);
     }
     
-    public void comprovarGanador (){
-       int [][] salida = this.getListaNumeros();
-       for (int i = 0;i<salida.length; i++){
-           for(int j = 0; j<6; j++){
-               System.out.println(salida[i][j]);
-           }System.out.println("siguiente");
-       }
-    }
      private static int getRandomNumberInRange(int min, int max) {
-		if (min >= max) {
-                throw new IllegalArgumentException("max must be greater than min");
-		}
 		Random r = new Random();
 		return r.nextInt((max - min)+1)+min;
 	}
@@ -104,8 +101,12 @@ public class Primitiva  extends Apuesta {
             int primitiva [][]= new int [tope][6];
             for (int j = 0; j<tope;j++){
       		for (int i = 0; i < 6; i++) {
-                        primitiva[j][i]=getRandomNumberInRange(1,49);
+                        primitiva[j][i]=getRandomNumberInRange(0,1);
 		}
             }this.setListaNumeros(primitiva);
+    }
+
+    @Override
+    public void comprovarGanador() {
     }
 }

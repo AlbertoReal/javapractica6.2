@@ -80,7 +80,8 @@ public abstract class Apuesta {
             throw new miExcepcion();
         }
         }catch(miExcepcion es){
-            crearApuesta();
+           SimulacionLoteria s1 = new SimulacionLoteria();
+           s1.mostrarMenu();
         }return salida;
     }
 
