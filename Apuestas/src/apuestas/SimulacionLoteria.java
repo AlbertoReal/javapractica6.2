@@ -26,6 +26,22 @@ public class SimulacionLoteria {
         this.setNumeroSimulaciones(numeroSimulaciones);
     }
 
+    public ArrayList<Apuesta> getApuestasHumanas() {
+        return apuestasHumanas;
+    }
+
+    public void setApuestasHumanas(ArrayList<Apuesta> apuestasHumanas) {
+        this.apuestasHumanas = apuestasHumanas;
+    }
+
+    public ArrayList<Apuesta> getApuestasAleatorias() {
+        return apuestasAleatorias;
+    }
+
+    public void setApuestasAleatorias(ArrayList<Apuesta> apuestasAleatorias) {
+        this.apuestasAleatorias = apuestasAleatorias;
+    }
+    
     public int getNumeroSimulaciones() {
         return numeroSimulaciones;
     }
@@ -93,7 +109,6 @@ public class SimulacionLoteria {
                                 if (Arrays.equals(apuestaHumana, apuestaAleatoria)) {
                                     System.out.println("suerte");
                                     Humana.mostrarApuesta(); 
-                                    break;
                                 }
                             }
 
@@ -119,7 +134,6 @@ public class SimulacionLoteria {
                                 if (Arrays.equals(apuestaHumana, apuestaAleatoria)) {
                                     System.out.println("suerte quiniela");
                                     Humana.mostrarApuesta();
-                                    break;
                                 }
                             }
 

@@ -107,5 +107,4 @@ public abstract class Apuesta {
         this.setNumeroDeApuestas(entrada.nextInt());
     }
     public abstract void apuestaAleatoria ();
-    public abstract void comprovarGanador();
 }

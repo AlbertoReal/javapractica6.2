@@ -71,8 +71,15 @@ public class Quiniela extends Apuesta {
         int quiniela[][] = new int[apuestasTotales][15];
         for (int i = 0; i < apuestasTotales; i++) {
             for (int j = 0; j < 15; j++) {
-                System.out.println("apuesta");
-                quiniela[i][j] = entrada.nextInt();
+                System.out.println("siguinete apuesta");
+                String valor = entrada.next();
+                if (valor.equals("x") || valor.equals("X")) {
+                    quiniela[i][j] = 0;
+                } else if (valor.equals("1")) {
+                    quiniela[i][j] = 1;
+                } else {
+                    quiniela[i][j] = 2;
+                }
             }
             System.out.println("siguiente quiniela\n");
         }
@@ -95,10 +102,6 @@ public class Quiniela extends Apuesta {
             }
         }
         this.setListanumeros(quiniela);
-    }
-
-    @Override
-    public void comprovarGanador() {
     }
 
 }
