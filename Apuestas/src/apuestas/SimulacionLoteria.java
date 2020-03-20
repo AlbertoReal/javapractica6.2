@@ -41,7 +41,7 @@ public class SimulacionLoteria {
     public void setApuestasAleatorias(ArrayList<Apuesta> apuestasAleatorias) {
         this.apuestasAleatorias = apuestasAleatorias;
     }
-    
+
     public int getNumeroSimulaciones() {
         return numeroSimulaciones;
     }
@@ -82,6 +82,7 @@ public class SimulacionLoteria {
                 apuestasAleatorias.add(q1);
                 ganadorPrimitiva();
                 ganadorQuiniela();
+                estadisticas();
                 mostrarMenu();
                 break;
             }
@@ -107,8 +108,8 @@ public class SimulacionLoteria {
                                 int[] apuestaAleatoria = aleatoria[l];
                                 Arrays.sort(apuestaAleatoria);
                                 if (Arrays.equals(apuestaHumana, apuestaAleatoria)) {
-                                    System.out.println("suerte");
-                                    Humana.mostrarApuesta(); 
+                                    System.out.println("Primitivas");
+                                    Humana.mostrarApuesta();
                                 }
                             }
 
@@ -118,7 +119,8 @@ public class SimulacionLoteria {
             }
         }
     }
-        public void ganadorQuiniela() {
+
+    public void ganadorQuiniela() {
         for (int i = 0; i < apuestasHumanas.size(); i++) {
             if (apuestasHumanas.get(i) instanceof Quiniela) {
                 for (int j = 0; j < apuestasAleatorias.size(); j++) {
@@ -132,7 +134,7 @@ public class SimulacionLoteria {
                             for (int l = 0; l < aleatoria.length; l++) {
                                 int[] apuestaAleatoria = aleatoria[l];
                                 if (Arrays.equals(apuestaHumana, apuestaAleatoria)) {
-                                    System.out.println("suerte quiniela");
+                                    System.out.println("Quinielas");
                                     Humana.mostrarApuesta();
                                 }
                             }
@@ -142,5 +144,61 @@ public class SimulacionLoteria {
                 }
             }
         }
+    }
+
+    public void estadisticas() {
+        int contadorPrimitiva = 0;
+        int contadorQuiniela =0;
+        for (int i = 0; i < apuestasHumanas.size(); i++) {
+            if (apuestasHumanas.get(i) instanceof Primitiva) {
+                for (int j = 0; j < apuestasAleatorias.size(); j++) {
+                    if (apuestasAleatorias.get(j) instanceof Primitiva) {
+                        Apuesta Humana = apuestasHumanas.get(i);
+                        Apuesta Aleatoria = apuestasAleatorias.get(j);
+                        int[][] humana = ((Primitiva) Humana).getListaNumeros();
+                        int[][] aleatoria = ((Primitiva) Aleatoria).getListaNumeros();
+                        for (int k = 0; k < humana.length; k++) {
+                            int[] apuestaHumana = humana[k];
+                            Arrays.sort(apuestaHumana);
+                            for (int l = 0; l < aleatoria.length; l++) {
+                                int[] apuestaAleatoria = aleatoria[l];
+                                Arrays.sort(apuestaAleatoria);
+                                for (int w = 0; w < 6; w++) {
+                                    if (apuestaAleatoria[w] == apuestaHumana[w]) {
+                                        contadorPrimitiva = contadorPrimitiva + 1;
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+        System.out.println("numero total de coincidencias en primitiva: " + contadorPrimitiva);
+        for (int i = 0; i < apuestasHumanas.size(); i++) {
+            if (apuestasHumanas.get(i) instanceof Quiniela) {
+                for (int j = 0; j < apuestasAleatorias.size(); j++) {
+                    if (apuestasAleatorias.get(j) instanceof Quiniela) {
+                        Apuesta Humana = apuestasHumanas.get(i);
+                        Apuesta Aleatoria = apuestasAleatorias.get(j);
+                        int[][] humana = ((Quiniela) Humana).getListanumeros();
+                        int[][] aleatoria = ((Quiniela) Aleatoria).getListanumeros();
+                        for (int k = 0; k < humana.length; k++) {
+                            int[] apuestaHumana = humana[k];
+                            for (int l = 0; l < aleatoria.length; l++) {
+                                int[] apuestaAleatoria = aleatoria[l];
+                                for(int w=0;w<15;w++){
+                                    if (apuestaAleatoria[w]==apuestaHumana[w]){
+                                        contadorQuiniela = contadorQuiniela+1;
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }System.out.println("numero de coincidencias totales quiniela: " +contadorQuiniela);
     }
 }

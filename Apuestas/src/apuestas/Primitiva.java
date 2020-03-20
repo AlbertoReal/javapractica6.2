@@ -92,7 +92,7 @@ public class Primitiva extends Apuesta {
         int primitiva[][] = new int[tope][6];
         for (int j = 0; j < tope; j++) {
             for (int i = 0; i < 6; i++) {
-                primitiva[j][i] = getRandomNumberInRange(1, 49);
+                primitiva[j][i] = getRandomNumberInRange(1,49);
             }
         }
         this.setListaNumeros(primitiva);
